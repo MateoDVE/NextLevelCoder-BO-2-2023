@@ -14,7 +14,7 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
-        self.x_pos_cloud = 180
+        self.x_pos_cloud = 780
         self.y_pos_cloud = 180
 
 
@@ -56,8 +56,8 @@ class Game:
     def draw_cloud(self):    
         image_width = CLOUD.get_width()
         self.screen.blit(CLOUD, (self.x_pos_cloud, self.y_pos_cloud))
-        self.screen.blit(CLOUD, (image_width + self.x_pos_cloud + 250 , self.y_pos_cloud))
+        self.screen.blit(CLOUD, (self.x_pos_cloud + 250, self.y_pos_cloud))
         if self.x_pos_cloud <= -image_width:
             self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
-            self.x_pos_cloud = 500
+            self.x_pos_cloud = 1500
         self.x_pos_cloud -= self.game_speed
