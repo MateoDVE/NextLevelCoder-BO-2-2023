@@ -1,0 +1,16 @@
+import pygame
+from dino_runner.utils.constants import FONT_STYLE, COLORS
+
+class TextUtils:
+    def get_score_element(self, points):
+        font = pygame.font.Font(FONT_STYLE ,22)
+        text = font.render("Points" + str(points), True, COLORS["black"])
+        text_rect = text.get_rect()
+        text_rect.center = (1000,50)
+        return text, text_rect
+    
+    def get_centred_mensage(self , message):
+        font = pygame.font.Font(FONT_STYLE ,30)
+        text = font.render(message, True, COLORS["black"])
+        text_rect = text.get_rect()
+        text_rect.center = (self.screen)
