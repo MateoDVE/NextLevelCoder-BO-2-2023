@@ -11,7 +11,12 @@ class ObstacleManager:
     
     def update(self, game):
         if len(self.obstacles) == 0:
-            self.obstacles.append(Cactus(SMALL_CACTUS))
+            rand = random.randint(0,1)
+            if rand == 0:
+                self.obstacles.append(Cactus(SMALL_CACTUS))
+            elif rand == 1:
+                self.obstacles.append(Bird(BIRD))
+                
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.rect.colliderect(obstacle.rect):
