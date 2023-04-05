@@ -1,6 +1,6 @@
 import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.text_utils import TextUtils
 
@@ -22,6 +22,7 @@ class Game:
         self.text_utils = TextUtils()
         self.points = 0
         self.game_running = True
+        self.death_count = 0
     
 
     def execute(self):
@@ -97,8 +98,23 @@ class Game:
 
     
     def print_menu_elements(self):
-        text,text_rect = self.text_utils.get_centred_message("press any key to start")
-        self.screen.blit(text, text_rect)
+        hald_screen_heigt = SCREEN_HEIGHT //2
+        hald_screen_width = SCREEN_WIDTH //2
+
+        if self.death_count == 0:
+            text,text_rect = self.text_utils.get_centred_menssage("press any key to start")
+            self.screen.blit(text, text_rect)
+
+        elif self.death_count > 0:
+            score, score_rect = self.text_utils.get_centred_menssage("Your Score: " + str(self.points), heigt = hald_screen_heigt +50)
+            death, death_rect = self.text_utils.get_centred_menssage("Death count: " + str(self.death_count), heigt = hald_screen_heigt +100)
+
+            self.screen.blit(score, score_rect)
+            self.screen.blit(death, death_rect)
+
+        self.screen.blit(RUNNING[0], (hald_screen_width -20, hald_screen_heigt -140))
+
+    
     
     def handle_key_event_on_menu(self):
         for event in pygame.event.get():
@@ -106,6 +122,7 @@ class Game:
                 self.game_running = False
                 self.playing = False
                 pygame.display.quit()
+                pygame.quit
                 exit()
             if event.type == pygame.KEYDOWN:
                 self.run()
