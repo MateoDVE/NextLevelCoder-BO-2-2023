@@ -56,7 +56,7 @@ class Dinosaur(Sprite):
             self.running = False
             self.ducking = True
             self.jumping = False
-        elif user_input[pygame.K_UP] and not self.jumping:
+        elif user_input[pygame.K_SPACE] and not self.jumping:
             self.running = False
             self.ducking = False
             self.jumping = True

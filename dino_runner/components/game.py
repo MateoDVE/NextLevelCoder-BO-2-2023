@@ -29,7 +29,7 @@ class Game:
         while self.game_running:
             if not self.playing:
                 self.show_menu()
-            self.run()
+            # self.run()
 
 
     def run(self):
@@ -39,7 +39,6 @@ class Game:
             self.events()
             self.update()
             self.draw()
-        pygame.quit()
 
     def events(self):
         for event in pygame.event.get():
@@ -83,7 +82,7 @@ class Game:
         self.x_pos_cloud -= self.game_speed
     
     def score(self):
-        self.points +=1
+        self.points += 1
         text, text_rect = self.text_utils.get_score_element(self.points)
         self.screen.blit(text, text_rect)
     
@@ -95,24 +94,22 @@ class Game:
         pygame.display.update()
         self.handle_key_event_on_menu()
 
-
-    
     def print_menu_elements(self):
-        hald_screen_heigt = SCREEN_HEIGHT //2
-        hald_screen_width = SCREEN_WIDTH //2
+        half_screen_height = SCREEN_HEIGHT //2
+        half_screen_width = SCREEN_WIDTH //2
 
         if self.death_count == 0:
-            text,text_rect = self.text_utils.get_centred_menssage("press any key to start")
+            text, text_rect = self.text_utils.get_centered_menssage("press any key to start")
             self.screen.blit(text, text_rect)
 
         elif self.death_count > 0:
-            score, score_rect = self.text_utils.get_centred_menssage("Your Score: " + str(self.points), heigt = hald_screen_heigt +50)
-            death, death_rect = self.text_utils.get_centred_menssage("Death count: " + str(self.death_count), heigt = hald_screen_heigt +100)
+            score, score_rect = self.text_utils.get_centered_menssage("Your Score: " + str(self.points), height = half_screen_height + 50)
+            death, death_rect = self.text_utils.get_centered_menssage("Death count: " + str(self.death_count), height = half_screen_height + 100)
 
             self.screen.blit(score, score_rect)
             self.screen.blit(death, death_rect)
 
-        self.screen.blit(RUNNING[0], (hald_screen_width -20, hald_screen_heigt -140))
+        self.screen.blit(RUNNING[0], (half_screen_width -20, half_screen_height -140))
 
     
     

@@ -9,9 +9,9 @@ class TextUtils:
         text_rect.center = (1000,50)
         return text, text_rect
     
-    def get_centred_menssage(self , message, width=SCREEN_WIDTH //2, heigth = SCREEN_HEIGHT //2 ):
+    def get_centered_menssage(self , message, width = SCREEN_WIDTH //2, height = SCREEN_HEIGHT //2 ):
         font = pygame.font.Font(FONT_STYLE ,30)
         text = font.render(message, True, COLORS["black"])
         text_rect = text.get_rect()
-        text_rect.center = (width, heigth )
+        text_rect.center = (width, height )
         return text, text_rect

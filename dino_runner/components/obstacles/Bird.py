@@ -1,5 +1,5 @@
 from dino_runner.components.obstacles.obstacle import Obstacle
-from dino_runner.utils.constants import BIRD
+from dino_runner.utils.constants import BIRD, SCREEN_WIDTH
 import random
 
 
@@ -8,7 +8,6 @@ class Bird(Obstacle):
         self.type = 0
         super().__init__(image_list[self.type])
         self.rect.y = 250
-        self.rect.x = 800
         self.step_index = 0
     
     def fly(self):
