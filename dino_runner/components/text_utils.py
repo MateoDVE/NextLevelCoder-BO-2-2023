@@ -15,6 +15,7 @@ class TextUtils:
         text_rect = text.get_rect()
         text_rect.center = (width, height + 50) 
         return text, text_rect
+    
     def get_time_element(self, time):
         font = pygame.font.Font(FONT_STYLE2, 22)
         text = font.render("Shield Time: " + str(time), True, COLORS["black"])

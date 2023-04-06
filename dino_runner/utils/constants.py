@@ -75,6 +75,8 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+BG2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/BackGround2.png'))
+BG1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/BackGround1.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 

@@ -1,7 +1,7 @@
 import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.powerups.power_up_manager import PowerUpManager
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING, CLOUD2
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING, CLOUD2, BG2, BG1
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.text_utils import TextUtils
 import os
@@ -17,6 +17,10 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.x_pos_bg2 = 0
+        self.y_pos_bg2 = 15
+        self.x_pos_bg1 = 0
+        self.y_pos_bg1 = -10
         self.x_pos_cloud = 200
         self.x_pos_cloud2 = 300
         self.y_pos_cloud = 180
@@ -68,6 +72,8 @@ class Game:
     def draw(self):
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
+        #self.draw_backg1()
+        #self.draw_backg2()
         self.draw_background()
         self.draw_cloud()
         self.draw_cloud2()
@@ -86,6 +92,24 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+    
+    def draw_backg2(self):
+        image_width = BG2.get_width()
+        self.screen.blit(BG2, (self.x_pos_bg2, self.y_pos_bg2))
+        self.screen.blit(BG2, (image_width + self.x_pos_bg2, self.y_pos_bg2))
+        if self.x_pos_bg2 <= -image_width:
+            self.screen.blit(BG2, (image_width + self.x_pos_bg2, self.y_pos_bg2))
+            self.x_pos_bg2 = 0
+        self.x_pos_bg2 -= self.game_speed
+    
+    def draw_backg1(self):
+        image_width = BG1.get_width()
+        self.screen.blit(BG1, (self.x_pos_bg1, self.y_pos_bg1))
+        self.screen.blit(BG1, (image_width + self.x_pos_bg1, self.y_pos_bg1))
+        if self.x_pos_bg1 <= -image_width:
+            self.screen.blit(BG1, (image_width + self.x_pos_bg1, self.y_pos_bg1))
+            self.x_pos_bg1 = 0
+        self.x_pos_bg1 -= self.game_speed
 
  
     def draw_cloud(self):    
