@@ -1,5 +1,8 @@
 import pygame
 import os
+pygame.init()
+pygame.font.init()
+
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -12,8 +15,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
 RUNNING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1 T.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2 T.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
 
 RUNNING_SHIELD = [
@@ -26,7 +29,7 @@ RUNNING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
 
-JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpT.png"))
+JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 
@@ -71,10 +74,13 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
-FONT_STYLE = "freesansbold.ttf"
+FONT_STYLE = "fonts/Hey November.ttf"
+FONT_STYLE2 = "fonts/PressStart2P-vaV7.ttf"
 
 COLORS = {
     "black" : (0,0,0),
-    "white" : (255,255,255)
+    "white" : (255,255,255),
+    "green" : (132, 216, 0),
+    "blue" : (2, 2, 28)
 
 }

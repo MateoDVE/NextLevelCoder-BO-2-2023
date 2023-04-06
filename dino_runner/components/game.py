@@ -4,6 +4,7 @@ from dino_runner.components.powerups.power_up_manager import PowerUpManager
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.text_utils import TextUtils
+import os
 
 class Game:
     def __init__(self):
@@ -28,6 +29,9 @@ class Game:
     
 
     def execute(self):
+        music_game = pygame.mixer.Sound(os.path.join('MUSICA/ferxxo.mp3'))
+        music_game.set_volume (0.2)
+        music_game.play(-1)
         while self.game_running:
             if not self.playing:
                 self.show_menu()
@@ -84,7 +88,7 @@ class Game:
         self.screen.blit(CLOUD, (self.x_pos_cloud + 250, self.y_pos_cloud))
         if self.x_pos_cloud <= -image_width:
             self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
-            self.x_pos_cloud = 1500
+            self.x_pos_cloud = SCREEN_WIDTH
         self.x_pos_cloud -= self.game_speed
     
     def score(self):
@@ -106,6 +110,8 @@ class Game:
         half_screen_width = SCREEN_WIDTH //2
 
         if self.death_count == 0:
+            my_image = pygame.image.load("Portada/dino1.png")
+            self.screen.blit(my_image, (20,150))
             text, text_rect = self.text_utils.get_centered_menssage("press any key to start")
             self.screen.blit(text, text_rect)
 
@@ -117,6 +123,8 @@ class Game:
             self.screen.blit(death, death_rect)
 
         self.screen.blit(RUNNING[0], (half_screen_width -20, half_screen_height -140))
+        my_image = pygame.image.load("Portada/Lentes_ferxxo.png")
+        self.screen.blit(my_image, (425, 70))
 
     
     
@@ -126,7 +134,7 @@ class Game:
                 self.game_running = False
                 self.playing = False
                 pygame.display.quit()
-                pygame.quit
+                pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
                 self.run()
