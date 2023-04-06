@@ -128,6 +128,8 @@ class Game:
             self.screen.blit(my_image2, (405, 385))
             my_image3 = pygame.image.load("Portada/Cara1.png")
             self.screen.blit(my_image3, (150, 150))
+            my_image4 = pygame.image.load("Portada/Cara2.png")
+            self.screen.blit(my_image4, (750, 150))
             reset_button = pygame.image.load("Portada/Reset.png")
             self.screen.blit(reset_button, (540, 290))
             mouse_pressed = pygame.mouse.get_pressed()
