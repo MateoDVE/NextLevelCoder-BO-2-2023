@@ -17,9 +17,10 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
-        self.x_pos_cloud = SCREEN_WIDTH
+        self.x_pos_cloud = 200
+        self.x_pos_cloud2 = 300
         self.y_pos_cloud = 180
-        self.y_pos_cloud2 = 70
+        self.y_pos_cloud2 = 4
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.text_utils = TextUtils()
@@ -98,11 +99,11 @@ class Game:
     
     def draw_cloud2(self):    
         image_width = CLOUD2.get_width()
-        self.screen.blit(CLOUD2, (self.x_pos_cloud, self.y_pos_cloud2))
-        if self.x_pos_cloud <= -image_width:
-            self.screen.blit(CLOUD2, (image_width + self.x_pos_cloud, self.y_pos_cloud2))
-            self.x_pos_cloud = SCREEN_WIDTH
-        self.x_pos_cloud -= self.game_speed
+        self.screen.blit(CLOUD2, (self.x_pos_cloud2, self.y_pos_cloud2))
+        if self.x_pos_cloud2 <= -image_width:
+            self.screen.blit(CLOUD2, (image_width + self.x_pos_cloud2, self.y_pos_cloud2))
+            self.x_pos_cloud2 = SCREEN_WIDTH
+        self.x_pos_cloud2 -= self.game_speed
 
     
     def score(self):
