@@ -26,17 +26,19 @@ class Game:
         self.game_running = True
         self.death_count = 0
         self.powerup_manager = PowerUpManager()
+        self.music_game = pygame.mixer.Sound(os.path.join('MUSICA/ferxxo.mp3'))
+        self.music_game.set_volume(0.2)
         self.reset_button_rect = pygame.Rect(540, 290, 50, 30)
+        
     
 
     def execute(self):
-        music_game = pygame.mixer.Sound(os.path.join('MUSICA/ferxxo.mp3'))
-        music_game.set_volume (0.2)
-        music_game.play(-1)
+        self.music_game.play(-1)
         while self.game_running:
             if not self.playing:
                 self.show_menu()
             # self.run()
+    
 
 
     def run(self):
@@ -97,7 +99,7 @@ class Game:
         text, text_rect = self.text_utils.get_score_element(self.points)
         self.screen.blit(text, text_rect)
         self.player.check_invincibility(self.screen)
-    
+
     def show_menu(self):
         self.game_running = True
         self.screen.fill(COLORS["white"])
@@ -117,11 +119,15 @@ class Game:
             self.screen.blit(text, text_rect)
 
         elif self.death_count > 0:
-            score, score_rect = self.text_utils.get_centered_menssage("Your Score: " + str(self.points), height = half_screen_height + 50)
-            death, death_rect = self.text_utils.get_centered_menssage("Death count: " + str(self.death_count), height = half_screen_height + 100)
+            score, score_rect = self.text_utils.get_centered_menssage("Your Score: " + str(self.points), height = half_screen_height + 100)
+            death, death_rect = self.text_utils.get_centered_menssage("Death count: " + str(self.death_count), height = half_screen_height + 150)
 
             self.screen.blit(score, score_rect)
             self.screen.blit(death, death_rect)
+            my_image2 = pygame.image.load("Portada/GameOver.png")
+            self.screen.blit(my_image2, (405, 385))
+            my_image3 = pygame.image.load("Portada/Cara1.png")
+            self.screen.blit(my_image3, (150, 150))
             reset_button = pygame.image.load("Portada/Reset.png")
             self.screen.blit(reset_button, (540, 290))
             mouse_pressed = pygame.mouse.get_pressed()
@@ -150,5 +156,8 @@ class Game:
 
     def reset_game(self):
         self.points = 0
-        self.death_count +=1
+        self.death_count =0
+        self.music_game.stop()
         self.execute()
+        
+        

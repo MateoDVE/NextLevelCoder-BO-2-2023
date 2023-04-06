@@ -1,4 +1,5 @@
 from pygame.sprite import Sprite
+from dino_runner.components.text_utils import TextUtils
 from dino_runner.utils.constants import (
     JUMPING, 
     RUNNING, 
@@ -33,6 +34,7 @@ class Dinosaur(Sprite):
         self.jumping = False
         self.jump_vel = self.JUMP_VEL
         self.setup_state_variables()
+        self.text_utils = TextUtils()
 
     def setup_state_variables(self):
         self.has_powerup = False
@@ -95,8 +97,8 @@ class Dinosaur(Sprite):
             time_to_show = round((self.shield_time_up - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:
                 if self.show_text:
-                    #codigo mostrar tiempo q falta time_to_show
-                    pass
+                    time_text, time_rect = self.text_utils.get_time_element(time_to_show)
+                    screen.blit(time_text, time_rect)
             else:
                 self.shield = False
                 self.update_to_default(SHIELD_TYPE)

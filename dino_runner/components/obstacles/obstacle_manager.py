@@ -26,10 +26,9 @@ class ObstacleManager:
                 if not game.player.shield:
                     pygame.time.delay(500)
                     game.playing = False
-                    pygame.mixer.music.stop()
-                    pygame.mixer.music.rewind()
-                    game.death_count +=1
-                    break 
+                    game.death_count += 1
+                    break
+            
 
     def draw(self,screen):
         for obstacle in self.obstacles:
