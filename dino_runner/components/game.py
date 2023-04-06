@@ -26,6 +26,7 @@ class Game:
         self.game_running = True
         self.death_count = 0
         self.powerup_manager = PowerUpManager()
+        self.reset_button_rect = pygame.Rect(540, 290, 50, 30)
     
 
     def execute(self):
@@ -121,6 +122,14 @@ class Game:
 
             self.screen.blit(score, score_rect)
             self.screen.blit(death, death_rect)
+            reset_button = pygame.image.load("Portada/Reset.png")
+            self.screen.blit(reset_button, (540, 290))
+            mouse_pressed = pygame.mouse.get_pressed()
+            if mouse_pressed[0]:  # el botón izquierdo del ratón está presionado
+                mouse_pos = pygame.mouse.get_pos()  # devuelve la posición actual del ratón
+                if self.reset_button_rect.collidepoint(mouse_pos):  # si la posición del ratón está sobre el botón de reinicio
+                    self.reset_game()
+
 
         self.screen.blit(RUNNING[0], (half_screen_width -20, half_screen_height -140))
         my_image = pygame.image.load("Portada/Lentes_ferxxo.png")
@@ -138,3 +147,8 @@ class Game:
                 exit()
             if event.type == pygame.KEYDOWN:
                 self.run()
+
+    def reset_game(self):
+        self.points = 0
+        self.death_count +=1
+        self.execute()

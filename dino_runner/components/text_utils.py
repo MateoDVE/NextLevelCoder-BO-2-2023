@@ -3,7 +3,7 @@ from dino_runner.utils.constants import FONT_STYLE2, COLORS, SCREEN_HEIGHT, SCRE
 
 class TextUtils:
     def get_score_element(self, points):
-        font = pygame.font.Font(FONT_STYLE2 ,22)
+        font = pygame.font.Font(FONT_STYLE ,22)
         text = font.render("Points" + str(points), True, COLORS["black"])
         text_rect = text.get_rect()
         text_rect.center = (1000,50)
