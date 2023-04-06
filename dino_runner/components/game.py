@@ -29,7 +29,7 @@ class Game:
         self.death_count = 0
         self.powerup_manager = PowerUpManager()
         self.music_game = pygame.mixer.Sound(os.path.join('MUSICA/ferxxo.mp3'))
-        self.music_game.set_volume(0.2)
+        self.music_game.set_volume(0.1)
         self.reset_button_rect = pygame.Rect(540, 290, 50, 30)
         
     
